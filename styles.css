@@ -629,7 +629,33 @@ code {
 
 @media (max-width: 760px) {
   .app-shell {
-    padding: 12px;
+    gap: 12px;
+    padding: 8px;
+  }
+
+  .editor-panel {
+    border-radius: 6px;
+  }
+
+  .panel-header {
+    gap: 14px;
+    padding: 18px 16px 12px;
+  }
+
+  .status-bar,
+  .verification-panel {
+    margin-right: 16px;
+    margin-left: 16px;
+  }
+
+  .tabs {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  form {
+    padding-right: 16px;
+    padding-left: 16px;
   }
 
   .grid.two,
@@ -644,27 +670,124 @@ code {
   }
 
   .header-actions {
-    justify-content: stretch;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
   }
 
-  .header-actions > *,
-  .items-toolbar button,
+  .header-actions > * {
+    width: 100%;
+  }
+
+  .language-toggle {
+    grid-column: 1 / -1;
+  }
+
+  .items-toolbar button {
+    width: 100%;
+  }
+
+  .data-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
   .data-actions > * {
-    flex: 1 1 auto;
+    width: 100%;
   }
 
   .preview-panel {
-    overflow-x: auto;
-    justify-content: flex-start;
+    display: block;
+    overflow: visible;
   }
 
   .invoice-paper {
-    transform-origin: top left;
+    width: 100%;
+    min-height: 0;
+    padding: 30px 20px 42px;
+    overflow-wrap: anywhere;
+    box-shadow: 0 8px 24px rgba(22, 28, 36, 0.12);
+  }
+
+  .invoice-top,
+  .bill-summary {
+    grid-template-columns: minmax(0, 1fr) 112px;
+    gap: 16px;
+  }
+
+  .bill-summary dl div {
+    grid-template-columns: 56px minmax(0, 1fr);
+    gap: 5px;
+  }
+
+  .invoice-table {
+    font-size: 12px;
+  }
+
+  .invoice-table th,
+  .invoice-table td {
+    padding: 8px 3px;
+  }
+
+  .invoice-table th:nth-child(2),
+  .invoice-table td:nth-child(2) {
+    width: 68px;
+  }
+
+  .invoice-table th:nth-child(3),
+  .invoice-table td:nth-child(3) {
+    width: 48px;
+  }
+
+  .invoice-table th:nth-child(4),
+  .invoice-table td:nth-child(4) {
+    width: 72px;
+  }
+
+  .totals dl {
+    width: 180px;
   }
 
   .modal-actions {
     display: grid;
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 420px) {
+  h1 {
+    font-size: 22px;
+  }
+
+  .invoice-paper {
+    padding-right: 14px;
+    padding-left: 14px;
+    font-size: 13px;
+  }
+
+  .invoice-top,
+  .bill-summary {
+    grid-template-columns: minmax(0, 1fr) 96px;
+    gap: 10px;
+  }
+
+  .invoice-table {
+    font-size: 11px;
+  }
+
+  .invoice-table th:nth-child(2),
+  .invoice-table td:nth-child(2) {
+    width: 58px;
+  }
+
+  .invoice-table th:nth-child(3),
+  .invoice-table td:nth-child(3) {
+    width: 42px;
+  }
+
+  .invoice-table th:nth-child(4),
+  .invoice-table td:nth-child(4) {
+    width: 65px;
   }
 }
 
