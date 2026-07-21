@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>QQ Invoice 2008 - Experimental</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <aside class="experiment-ribbon" aria-label="Experimental version">
+      <span class="qq-mark" aria-hidden="true">Q</span>
+      <strong>QQ Invoice 2008</strong>
+      <span class="experiment-label">实验版</span>
+      <a href="../">返回正式版</a>
+    </aside>
+    <div class="qq-window">
+      <header class="qq-titlebar">
+        <div class="qq-title-copy">
+          <span class="qq-app-icon" aria-hidden="true">Q</span>
+          <strong>Invoice 2007 - 发票小助手</strong>
+        </div>
+        <div class="window-controls" aria-hidden="true">
+          <span>_</span><span>□</span><span>×</span>
+        </div>
+      </header>
+
+      <nav class="qq-toolbar" aria-label="Quick actions">
+        <button type="button" data-qq-tab="details"><span aria-hidden="true">▤</span>基本资料</button>
+        <button type="button" data-qq-tab="items"><span aria-hidden="true">✎</span>工作项目</button>
+        <button type="button" data-qq-tab="payment"><span aria-hidden="true">$</span>付款资料</button>
+        <i aria-hidden="true"></i>
+        <button type="button" data-qq-action="next"><span aria-hidden="true">＋</span>下一期</button>
+        <button type="button" data-qq-action="save"><span aria-hidden="true">◆</span>保存</button>
+        <button type="button" data-qq-action="print"><span aria-hidden="true">▣</span>打印</button>
+      </nav>
+
+      <main class="app-shell">
+        <aside class="qq-sidebar" aria-label="Invoice navigation">
+          <section class="qq-side-group">
+            <h2><span aria-hidden="true">Q</span> 发票中心</h2>
+            <button class="active" type="button" data-qq-tab="details">新建发票</button>
+            <button type="button" data-qq-tab="items">工作记录</button>
+            <button type="button" data-qq-tab="payment">银行资料</button>
+          </section>
+          <section class="qq-side-group">
+            <h2>常用资料</h2>
+            <button type="button" data-qq-tab="details">我的信息</button>
+            <button type="button" data-qq-tab="details">客户信息</button>
+            <button type="button" data-qq-tab="payment">收款账户</button>
+          </section>
+          <section class="qq-side-group compact">
+            <h2>快捷任务</h2>
+            <button type="button" data-qq-action="next">制作下一期</button>
+            <button type="button" data-qq-action="print">导出 PDF</button>
+          </section>
+          <div class="qq-user-card">
+            <span class="qq-avatar" aria-hidden="true">Q</span>
+            <div><strong>Invoice User</strong><small>在线 · 自动保存</small></div>
+          </div>
+        </aside>
+      <section class="editor-panel" aria-label="Invoice editor">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Local invoice maker</p>
+            <h1>发票制作</h1>
+          </div>
+          <div class="header-actions">
+            <div class="language-toggle" role="group" aria-label="Language">
+              <button class="lang-button active" type="button" data-language="en">EN</button>
+              <button class="lang-button" type="button" data-language="zh">中文</button>
+            </div>
+            <button id="newInvoiceTopButton" class="secondary-button" type="button">制作下一期发票</button>
+            <button id="saveButton" class="primary-button" type="button">保存</button>
+            <button id="printButton" class="icon-button" type="button" title="打印 / 保存 PDF">Print</button>
+          </div>
+        </div>
+
+        <div class="status-bar" id="saveStatus" role="status">所有内容会自动保存在本机浏览器。</div>
+
+        <div class="verification-panel" id="verificationPanel" aria-live="polite"></div>
+
+        <div class="tabs" role="tablist" aria-label="Editor sections">
+          <button class="tab active" type="button" data-tab="details">Details</button>
+          <button class="tab" type="button" data-tab="items">Items</button>
+          <button class="tab" type="button" data-tab="payment">Payment</button>
+        </div>
+
+        <form id="invoiceForm" autocomplete="on">
+          <section class="tab-panel active" data-panel="details">
+            <div class="grid two">
+              <label>
+                Your name
+                <input id="sellerName" name="sellerName" type="text" />
+              </label>
+              <label>
+                Your ABN
+                <input id="sellerAbn" name="sellerAbn" type="text" inputmode="numeric" />
+                <span class="field-message" id="sellerAbnMessage"></span>
+              </label>
+            </div>
+
+            <label>
+              Your address
+              <textarea id="sellerAddress" name="sellerAddress" rows="2"></textarea>
+            </label>
+
+            <div class="grid two">
+              <label>
+                Email
+                <input id="sellerEmail" name="sellerEmail" type="email" />
+              </label>
+              <label>
+                Phone
+                <input id="sellerPhone" name="sellerPhone" type="tel" />
+              </label>
+            </div>
+
+            <hr />
+
+            <div class="grid two">
+              <label>
+                Bill to
+                <input id="clientName" name="clientName" type="text" />
+              </label>
+              <label>
+                Client ABN
+                <input id="clientAbn" name="clientAbn" type="text" inputmode="numeric" />
+                <span class="field-message" id="clientAbnMessage"></span>
+              </label>
+            </div>
+
+            <label>
+              Client address
+              <textarea id="clientAddress" name="clientAddress" rows="2"></textarea>
+            </label>
+
+            <div class="grid three">
+              <label>
+                Invoice no.
+                <input id="invoiceNumber" name="invoiceNumber" type="text" />
+              </label>
+              <label>
+                Issued date
+                <input id="issuedDate" name="issuedDate" type="date" />
+              </label>
+              <label>
+                Terms days
+                <input id="termsDays" name="termsDays" type="number" min="0" step="1" />
+              </label>
+            </div>
+
+            <label>
+              Work site
+              <input id="workSite" name="workSite" type="text" />
+            </label>
+          </section>
+
+          <section class="tab-panel" data-panel="items">
+            <div class="items-toolbar">
+              <div>
+                <h2>工作项目</h2>
+                <p>Hours 和 Rate 支持数学运算，例如 <code>4.5+4.5</code>。</p>
+              </div>
+              <button id="addItemButton" class="secondary-button" type="button">Add row</button>
+            </div>
+
+            <div class="item-list" id="itemList"></div>
+          </section>
+
+          <section class="tab-panel" data-panel="payment">
+            <div class="grid two">
+              <label>
+                Account name
+                <input id="accountName" name="accountName" type="text" />
+              </label>
+              <label>
+                BSB
+                <input id="bsb" name="bsb" type="text" inputmode="numeric" />
+                <span class="field-message" id="bsbMessage"></span>
+              </label>
+            </div>
+
+            <label>
+              Account number
+              <input id="accountNumber" name="accountNumber" type="text" inputmode="numeric" />
+            </label>
+
+            <label>
+              Notes
+              <textarea id="notes" name="notes" rows="3"></textarea>
+            </label>
+
+            <div class="data-actions">
+              <button id="newInvoiceButton" class="secondary-button" type="button">新发票</button>
+              <button id="exportButton" class="secondary-button" type="button">导出数据</button>
+              <label class="file-button">
+                导入数据
+                <input id="importInput" type="file" accept="application/json" />
+              </label>
+            </div>
+          </section>
+        </form>
+      </section>
+
+      <section class="preview-panel" aria-label="Invoice preview">
+        <article class="invoice-paper" id="invoicePreview">
+          <header class="invoice-top">
+            <div class="seller-block">
+              <strong id="previewSellerName"></strong>
+              <span id="previewSellerAbn"></span>
+              <span id="previewSellerAddress"></span>
+              <span id="previewSellerEmail"></span>
+              <span id="previewSellerPhone"></span>
+            </div>
+            <div class="invoice-title">
+              <h2>Invoice</h2>
+              <span id="previewInvoiceNumber"></span>
+            </div>
+          </header>
+
+          <div class="rule"></div>
+
+          <section class="bill-summary">
+            <div>
+              <strong>Bill To</strong>
+              <span id="previewClientName"></span>
+              <span id="previewClientAbn"></span>
+              <span id="previewClientAddress"></span>
+            </div>
+            <dl>
+              <div>
+                <dt>Issued:</dt>
+                <dd id="previewIssuedDate"></dd>
+              </div>
+              <div>
+                <dt>Terms:</dt>
+                <dd id="previewTerms"></dd>
+              </div>
+              <div>
+                <dt>Due:</dt>
+                <dd id="previewDueDate"></dd>
+              </div>
+              <div>
+                <dt>Total:</dt>
+                <dd id="previewTotalTop"></dd>
+              </div>
+            </dl>
+          </section>
+
+          <div class="rule"></div>
+
+          <p class="work-site" id="previewWorkSite"></p>
+
+          <table class="invoice-table">
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody id="previewItems"></tbody>
+          </table>
+
+          <section class="totals">
+            <dl>
+              <div>
+                <dt>Total:</dt>
+                <dd id="previewTotal"></dd>
+              </div>
+            </dl>
+          </section>
+
+          <div class="rule"></div>
+
+          <section class="payment-details">
+            <strong>Payment details:</strong>
+            <span id="previewPayTerms"></span>
+            <span id="previewAccountName"></span>
+            <span id="previewBsb"></span>
+            <span id="previewAccountNumber"></span>
+            <span id="previewReference"></span>
+          </section>
+
+          <div class="rule"></div>
+          <p id="previewNotes"></p>
+        </article>
+      </section>
+      </main>
+      <footer class="qq-statusbar"><span>● 在线</span><span>资料仅保存在当前浏览器</span><span>QQ Invoice 2008 Experimental</span></footer>
+    </div>
+
+    <div class="modal-backdrop" id="nextInvoiceModal" hidden>
+      <section class="modal" role="dialog" aria-modal="true" aria-labelledby="nextInvoiceTitle">
+        <div class="modal-header">
+          <div>
+            <p class="eyebrow" id="nextInvoiceEyebrow">Next pay period</p>
+            <h2 id="nextInvoiceTitle">Create next invoice</h2>
+          </div>
+          <button class="modal-close" id="closeNextInvoiceModal" type="button" title="Close">x</button>
+        </div>
+
+        <p class="modal-summary" id="nextInvoiceSummary"></p>
+
+        <div class="grid two">
+          <label>
+            Description
+            <input id="nextDescription" type="text" />
+          </label>
+          <label>
+            Hourly rate
+            <input id="nextRate" type="text" inputmode="decimal" />
+          </label>
+        </div>
+
+        <label>
+          Hours per day
+          <input id="nextHours" type="text" inputmode="decimal" />
+        </label>
+
+        <div class="weekend-options">
+          <label class="check-row">
+            <input id="nextWorkSaturday" type="checkbox" />
+            <span>Worked Saturday</span>
+          </label>
+          <label class="check-row">
+            <input id="nextWorkSunday" type="checkbox" />
+            <span>Worked Sunday</span>
+          </label>
+        </div>
+
+        <div class="modal-actions">
+          <button class="secondary-button" id="cancelNextInvoice" type="button">Cancel</button>
+          <button class="primary-button" id="createNextInvoice" type="button">Create invoice</button>
+        </div>
+      </section>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
