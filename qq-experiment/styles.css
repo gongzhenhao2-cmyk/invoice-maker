@@ -852,7 +852,7 @@ body {
   min-height: calc(100vh - 50px);
   margin: 12px auto;
   border: 1px solid #174f80;
-  border-radius: 6px 6px 3px 3px;
+  border-radius: 8px;
   overflow: hidden;
   background: #ddecf8;
   box-shadow:
@@ -865,7 +865,7 @@ body {
   align-items: center;
   justify-content: space-between;
   min-height: 38px;
-  padding: 4px 7px 4px 11px;
+  padding: 5px 8px 5px 12px;
   color: #fff;
   background: linear-gradient(180deg, #83baf3 0%, #4f83d5 42%, #3968c4 52%, #74a6e9 100%);
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.75);
@@ -884,7 +884,7 @@ body {
   width: 25px;
   height: 25px;
   border: 1px solid #173e77;
-  border-radius: 4px;
+  border-radius: 7px;
   color: #2e65b7;
   background: linear-gradient(#fff, #d3e9ff);
   font-size: 14px;
@@ -902,7 +902,7 @@ body {
   width: 25px;
   height: 23px;
   border: 1px solid #315c99;
-  border-radius: 2px;
+  border-radius: 5px;
   background: linear-gradient(#f3f9ff, #8db8ea 48%, #5e8fd1 52%, #bdd8f7);
   font-size: 16px;
   line-height: 1;
@@ -918,7 +918,7 @@ body {
   align-items: stretch;
   min-height: 66px;
   border-bottom: 1px solid #7fa7cb;
-  padding: 4px 10px;
+  padding: 5px 11px;
   background: linear-gradient(180deg, #f9fcff, #dfeaf8 58%, #eef5fd);
   box-shadow: inset 0 -1px #fff;
 }
@@ -927,7 +927,7 @@ body {
   display: grid;
   min-width: 78px;
   border: 1px solid transparent;
-  border-radius: 4px;
+  border-radius: 8px;
   padding: 4px 9px;
   color: #274e70;
   background: transparent;
@@ -955,7 +955,7 @@ body {
 }
 
 .app-shell {
-  grid-template-columns: 190px minmax(340px, 430px) minmax(600px, 1fr);
+  grid-template-columns: 180px minmax(340px, 410px) minmax(500px, 1fr) 190px;
   gap: 8px;
   min-height: calc(100vh - 188px);
   padding: 8px;
@@ -967,7 +967,7 @@ body {
   flex-direction: column;
   min-width: 0;
   border: 1px solid #7fa8c8;
-  border-radius: 4px;
+  border-radius: 8px;
   overflow: hidden;
   background: #f7fbff;
   box-shadow: inset 0 0 0 1px #fff;
@@ -1000,7 +1000,7 @@ body {
   min-height: 29px;
   margin: 3px 6px 0;
   border: 1px solid transparent;
-  border-radius: 2px;
+  border-radius: 7px;
   padding: 4px 8px 4px 29px;
   color: #34546c;
   background: transparent;
@@ -1040,7 +1040,7 @@ body {
   width: 36px;
   height: 36px;
   border: 1px solid #5d89ac;
-  border-radius: 4px;
+  border-radius: 8px;
   color: #fff;
   background: linear-gradient(135deg, #7ab7e7, #4f64bd);
   font-weight: 700;
@@ -1061,7 +1061,7 @@ body {
   position: static;
   max-height: calc(100vh - 188px);
   border: 1px solid #276b9f;
-  border-radius: 5px;
+  border-radius: 8px;
   background: #edf7ff;
   box-shadow:
     inset 0 0 0 1px #fff,
@@ -1087,7 +1087,7 @@ h1 {
 .status-bar,
 .verification-panel {
   border-color: #8ab6d5;
-  border-radius: 2px;
+  border-radius: 8px;
   background: #fff;
   box-shadow: inset 0 0 5px rgba(76, 139, 183, 0.16);
 }
@@ -1102,7 +1102,7 @@ h1 {
 
 .tab {
   border-color: #72a4c8;
-  border-radius: 3px 3px 0 0;
+  border-radius: 8px 8px 3px 3px;
   color: #2d5776;
   background: linear-gradient(#fff, #cfe8f8);
   box-shadow: inset 0 1px #fff;
@@ -1123,7 +1123,7 @@ input,
 textarea,
 select {
   border-color: #7da7c4;
-  border-radius: 2px;
+  border-radius: 7px;
   box-shadow: inset 1px 1px 2px rgba(33, 80, 112, 0.12);
 }
 
@@ -1141,7 +1141,7 @@ select:focus {
 .remove-item,
 .modal-close {
   border-color: #5d8faf;
-  border-radius: 3px;
+  border-radius: 8px;
   color: #174b70;
   background: linear-gradient(#fff, #d2eaf9 48%, #a9d3ee 52%, #e9f7ff);
   box-shadow: inset 0 1px #fff, 0 1px 1px rgba(48, 91, 121, 0.2);
@@ -1170,28 +1170,179 @@ select:focus {
 .check-row,
 .modal-summary {
   border-color: #91b8d3;
-  border-radius: 3px;
+  border-radius: 8px;
   background: #f7fcff;
 }
 
 .modal {
   border: 1px solid #276b9f;
-  border-radius: 5px;
+  border-radius: 8px;
   background: #edf7ff;
   box-shadow: inset 0 0 0 1px #fff, 0 15px 40px rgba(16, 62, 96, 0.45);
 }
 
 .invoice-paper {
+  width: min(794px, 100%);
+  padding-right: clamp(36px, 5vw, 84px);
+  padding-left: clamp(36px, 5vw, 84px);
   border: 1px solid rgba(48, 95, 128, 0.3);
 }
 
 .preview-panel {
   border: 1px solid #7fa8c8;
-  border-radius: 4px;
+  border-radius: 8px;
   padding: 10px;
   overflow: auto;
   background: #b9d4e8;
   box-shadow: inset 0 0 0 1px #eef9ff;
+}
+
+.qq-show-panel {
+  align-self: start;
+  border: 1px solid #769fc1;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f7fbff;
+  box-shadow: inset 0 0 0 1px #fff, 0 2px 7px rgba(52, 96, 130, 0.2);
+}
+
+.qq-show-panel > header {
+  display: grid;
+  grid-template-columns: 18px 1fr 24px;
+  align-items: center;
+  min-height: 31px;
+  border-bottom: 1px solid #91b4cf;
+  padding: 3px 5px 3px 9px;
+  color: #2a5475;
+  background: linear-gradient(#fff, #d4e8f7);
+  font-size: 12px;
+}
+
+.qq-show-panel > header > span {
+  color: #599a36;
+}
+
+.qq-show-panel > header button {
+  border: 0;
+  color: #50738f;
+  background: transparent;
+  font-weight: 700;
+}
+
+.qq-show-stage {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 315px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 28%, rgba(255, 255, 255, 0.95), transparent 28%),
+    linear-gradient(180deg, #dff3ff, #bcdcf5 62%, #edf8ff 63%, #c4e0f1);
+}
+
+.qq-show-stage::after {
+  content: "";
+  position: absolute;
+  right: 18px;
+  bottom: 13px;
+  left: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(75, 120, 165, 0.16);
+  filter: blur(5px);
+}
+
+.qq-show-stage img {
+  position: relative;
+  z-index: 2;
+  width: auto;
+  height: 296px;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 2px rgba(44, 79, 118, 0.22));
+}
+
+.stage-spark {
+  position: absolute;
+  z-index: 1;
+  color: #fff;
+  font-size: 22px;
+  text-shadow: 0 0 6px #73a8e3;
+}
+
+.spark-one {
+  top: 45px;
+  left: 16px;
+}
+
+.spark-two {
+  top: 105px;
+  right: 14px;
+}
+
+.qq-show-profile {
+  border-top: 1px solid #8daec9;
+  padding: 8px;
+  background: linear-gradient(#f8fcff, #d9eaf7);
+  font-size: 11px;
+}
+
+.qq-show-profile > div {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.online-dot {
+  width: 9px;
+  height: 9px;
+  border: 1px solid #3c7f31;
+  border-radius: 50%;
+  background: #75bd45;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.8);
+}
+
+.level-badge {
+  float: right;
+  border: 1px solid #bc851d;
+  border-radius: 7px;
+  padding: 1px 5px;
+  color: #7e520a;
+  background: linear-gradient(#fff4a8, #eeb536);
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.qq-show-profile p {
+  clear: both;
+  margin: 7px 0 0;
+  border: 1px solid #b4cadb;
+  border-radius: 7px;
+  padding: 6px;
+  color: #557083;
+  background: #fff;
+}
+
+.qq-show-actions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3px;
+  border-top: 1px solid #a4bed2;
+  padding: 5px;
+  background: #dcecf7;
+}
+
+.qq-show-actions button {
+  min-height: 28px;
+  border: 1px solid #88abc5;
+  border-radius: 7px;
+  color: #376892;
+  background: linear-gradient(#fff, #cfe7f7);
+  font-weight: 700;
+}
+
+.qq-show-actions button:hover {
+  background: linear-gradient(#fffdf1, #ffdc7d);
 }
 
 .qq-statusbar {
@@ -1212,7 +1363,11 @@ select:focus {
 
 @media (max-width: 1280px) {
   .app-shell {
-    grid-template-columns: 175px minmax(340px, 430px) minmax(0, 1fr);
+    grid-template-columns: minmax(340px, 410px) minmax(0, 1fr) 185px;
+  }
+
+  .qq-sidebar {
+    display: none;
   }
 }
 
@@ -1221,7 +1376,8 @@ select:focus {
     grid-template-columns: minmax(340px, 430px) minmax(0, 1fr);
   }
 
-  .qq-sidebar {
+  .qq-sidebar,
+  .qq-show-panel {
     display: none;
   }
 
@@ -1283,6 +1439,7 @@ select:focus {
   .qq-titlebar,
   .qq-toolbar,
   .qq-sidebar,
+  .qq-show-panel,
   .qq-statusbar {
     display: none;
   }
